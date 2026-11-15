@@ -221,23 +221,32 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grim
 
 
-client.focused #A1A1A1 #A1A1A1 #000000 #A1A1A1 #A1A1A1
-client.unfocused #323232 #323232 #A1A1A1 #323232 #323232
+gaps inner 10
+gaps outer 5
+
+set $bg #0b0e14
+set $fg #ff8f40
+set $text #bfbdb6
+
+client.focused $fg $fg $bg $fg $fg
+client.unfocused $bg $bg $text $bg $bg
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
 
+    gaps 0 30 0 30
+
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #A1A1A1
-        focused_workspace #323232 #323232 #A1A1A1
-        inactive_workspace #A1A1A1 #A1A1A1 #323232
+        statusline $text
+        background $bg
+        focused_workspace $fg $fg $bg
+        inactive_workspace $bg $bg $text
     }
 }
 
